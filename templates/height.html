@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Height Predictor Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        h1 {
+            color: #333;
+        }
+        aside {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to the Height Predictor Application</h1>
+<p>This application predicts the final height of a child based on their current height, weight, and the heights of their parents.</p>
+<p><strong>Note:</strong> Currently, this application only works for children aged <strong>10 to 13</strong> years old.</p>
+<p>Come back later for more age groups!</p>
+
+<aside>
+    <h2>Enter Your Details</h2>
+    <form method="POST" action="/">
+        <label for="Age(year)">Age (10-13):</label><br>
+        <input type="number" name="Age(year)" min="10" max="13" required><br>
+
+        <label for="Current Height(cm)">Current Height (cm):</label><br>
+        <input type="number" name="Current Height(cm)" required><br>
+
+        <label for="Current Weight(kg)">Weight (kg):</label><br>
+        <input type="number" name="Current Weight(kg)" required><br>
+
+        <label for="Father's Height(cm)">Father's Height (cm):</label><br>
+        <input type="number" name="Father's Height(cm)" required><br>
+
+        <label for="Mother's Height(cm)">Mother's Height (cm):</label><br>
+        <input type="number" name="Mother's Height(cm)" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</aside>
+
+{% if prediction is not none or error is not none %}
+<aside>
+    {% if prediction is not none %}
+        <h3>Predicted Final Height: {{ prediction }} cm</h3>
+    {% endif %}
+    {% if error is not none %}
+        <h3 style="color: red;">{{ error }}</h3>
+    {% endif %}
+</aside>
+{% endif %}
+
+</body>
+</html>
