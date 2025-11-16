@@ -1,0 +1,3 @@
+This application is meant to predict the future height for 13-18 old dutch boys. 
+As of it's current version I have been able to get the prediction in the notebook(python)
+However I have not been able to properly "deploy" the prediciton to the frontend...
